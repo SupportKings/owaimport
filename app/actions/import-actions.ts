@@ -80,7 +80,7 @@ export async function processImport(
         analyzed: formattedData.length,
         duplicatesFound: 0,
         errors: validationResults.map(
-          result => `Row ${result?.index + 1}: ${JSON.stringify(result?.errors)}`
+          result => `Row ${(result && result.index !== undefined) ? result.index + 1 : 'Unknown'}: ${JSON.stringify(result && result.errors ? result.errors : {})}`
         ),
       };
     }
