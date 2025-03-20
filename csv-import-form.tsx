@@ -804,7 +804,7 @@ export default function CSVImportForm({ campaignId }: CSVImportFormProps) {
         const rowDecisions = data.map((row, index) => {
           // Check if this row is in any CSV duplicate group
           const duplicateGroup = csvDuplicates.find(group => 
-            group.records.some(record => record._originalIndex === index)
+            group.records.some((record: { _originalIndex: number }) => record._originalIndex === index)
           );
           
           if (!duplicateGroup) {
@@ -995,9 +995,9 @@ export default function CSVImportForm({ campaignId }: CSVImportFormProps) {
         // Prepare the unchanged apps data
         const unchangedApps = unchangedIds.map(id => {
           const duplicate = duplicates.find(d => 
-            d.duplicates.some(dup => dup.id === id)
+            d.duplicates.some((dup: { id: string }) => dup.id === id)
           );
-          const matchingDup = duplicate?.duplicates.find(dup => dup.id === id);
+          const matchingDup = duplicate?.duplicates.find((dup: { id: string }) => dup.id === id);
           
           // Add rootDomain if there's data
           if (matchingDup && matchingDup.companyWebsite) {
@@ -1028,9 +1028,9 @@ export default function CSVImportForm({ campaignId }: CSVImportFormProps) {
         // Prepare the updated apps data
         const updatedApps = updatedIds.map(id => {
           const duplicate = duplicates.find(d => 
-            d.duplicates.some(dup => dup.id === id)
+            d.duplicates.some((dup: { id: string }) => dup.id === id)
           );
-          const matchingDup = duplicate?.duplicates.find(dup => dup.id === id);
+          const matchingDup = duplicate?.duplicates.find((dup: { id: string }) => dup.id === id);
           const importedData = duplicate?.importData;
           const resolution = duplicateResolutions[id];
           const finalData = calculateFinalData(matchingDup, importedData, resolution);
@@ -1588,7 +1588,19 @@ Vocal Image: AI Voice Coach,1535324205,Vocal Image,Education,https://www.vocalim
                       </div>
 
                       {/* Show each duplicate match */}
-                      {duplicate.duplicates.map((existingRecord) => (
+                      {duplicate.duplicates.map((existingRecord: { 
+                        id: string;
+                        appName: string;
+                        appId: string;
+                        developer: string;
+                        category: string;
+                        companyWebsite?: string;
+                        companyLinkedinUrl?: string;
+                        sensorTowerId?: string;
+                        googlePlayId?: string;
+                        developerId?: string;
+                        campaignIds?: string[];
+                      }) => (
                         <div key={existingRecord.id} className="mt-4">
                           <div className="mb-2">
                             <RadioGroup
