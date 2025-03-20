@@ -5,9 +5,9 @@
   "framework": "nextjs",
   "installCommand": "npm install",
   "env": {
-    "NEXT_PUBLIC_AIRTABLE_API_KEY": "@next_public_airtable_api_key",
-    "NEXT_PUBLIC_AIRTABLE_BASE_ID": "@next_public_airtable_base_id",
-    "NEXT_PUBLIC_AIRTABLE_TABLE_NAME": "@next_public_airtable_table_name",
-    "NEXT_PUBLIC_WEBHOOK_URL": "@next_public_webhook_url"
+    "NEXT_PUBLIC_AIRTABLE_API_KEY": "@NEXT_PUBLIC_AIRTABLE_API_KEY",
+    "NEXT_PUBLIC_AIRTABLE_BASE_ID": "@NEXT_PUBLIC_AIRTABLE_BASE_ID",
+    "NEXT_PUBLIC_AIRTABLE_TABLE_NAME": "@NEXT_PUBLIC_AIRTABLE_TABLE_NAME",
+    "NEXT_PUBLIC_WEBHOOK_URL": "@NEXT_PUBLIC_WEBHOOK_URL"
   }
 } 
